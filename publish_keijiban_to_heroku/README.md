@@ -37,7 +37,20 @@ Authentication successful.
 
 # Step 4. heroku コマンドを使って掲示板用の Heroku プロジェクトを作る
 
-前回作った掲示板のディレクトリ (フォルダ) に移動して、
+前回作った掲示板のディレクトリ (フォルダ) に移動してください。
+
+Heroku に自分のアプリを送ってリリースするために [Git](http://git-scm.com/) という[バージョン管理システム](https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)を使います。
+
+Git は Mac では標準で入っています。
+Windows をお使いの方は、[ここから](http://git-scm.com/downloads)インストールしてください。
+
+初めて Git を使う方は、まず以下のようにターミナルに打ち込んで名前とメールアドレスを登録してください。
+
+```
+git config --global user.name "your-name"
+git config --global user.email "your-email"
+```
+まず、以下のコマンドで Git  `git init .`
 
 ```
 heroku create keijiban-(あなたの好きな名前)
@@ -122,8 +135,16 @@ postgres://(username):(password)@(host):(port)/(database)
 
 これによってローカルの開発環境でのみ、 sqlite を使うようになります。
 
-続いて、Heroku 上の環境 (production, 本番環境と呼びます) のための設定を書きます。
-これは、以下のようにしてください。
+続いて、Heroku 上の環境 (production, 本番環境と呼びます) のための設定をします。
+
+まずは、ライブラリをインストールするために PostgreSQL をインストールします。
+
+Mac OS X の場合は以下のコマンドでインストールできます。
+
+```
+brew install postgresql
+```
+続いて、 `Gemfile` に以下の内容を書き足してください。
 
 ```
 group :production do
@@ -138,28 +159,15 @@ end
 # Step 6. Heroku にアプリケーションを送る
 
 続いて、アプリを Heroku にアップロードしましょう。
-Heroku へのアップロードには [Git](http://git-scm.com/)  という[バージョン管理システム](https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)を使います。
 
-Git は Mac では標準で入っています。
-Windows をお使いの方は、[ここから](http://git-scm.com/downloads)インストールしてください。
-
-初めて Git を使う方は、まず以下のようにターミナルに打ち込んで名前とメールアドレスを登録してください。
-
-```
-git config --global user.name "your-name"
-git config --global user.email "your-email"
-```
-
-`heroku create` すると Git のレポジトリ (プロジェクトのファイルを保存する場所) が作られています。
-
-以下のコマンドを入力して、今まで作ったすべてのファイルを保存しましょう。
+以下のコマンドを入力して、git を使って今まで作ったすべてのファイルを保存しましょう。
 
 ```
 git add .
 git commit -m ‘Save all files’
 ```
 
-その後、`git push heroku` コマンドを入力してください。
+その後、`git push heroku master` コマンドを入力してください。
 少し時間がかかったあと、すべてのファイルが Heroku に送られます。
 
 # Step 7. Heroku のデータベースの設定をする
@@ -176,7 +184,7 @@ Heroku 上でコマンドを走らせるためには `heroku run` コマンド�
 ここでは以下のコマンドを入力します。
 
 ```
-heroic run rake db:migrate
+heroku run rake db:migrate
 ```
 
 これで先ほどの URL にアクセスすると、今まで手元で動いていた掲示板アプリがインターネット上で表示されるようになっているはずです。
