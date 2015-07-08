@@ -7,7 +7,7 @@ https://keijiban-sample.herokuapp.com/
 
 # Step 1. Heroku のアカウントを作る
 
-Rails のアプリケーションを公開するために、[Heroku](https://www.heroku.com/ というサービスを使います。
+Rails のアプリケーションを公開するために、[Heroku](https://www.heroku.com/) というサービスを使います。
 これは、Rails などで作られたウェブアプリケーションを公開するためのサービスです。
 
 まず、Heroku のトップページ右上の Sigh Up から Heroku のアカウントを作ってください。
