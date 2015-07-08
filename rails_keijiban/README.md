@@ -26,7 +26,7 @@ rails new keijiban
 
 ![](img/3-1.png)
 
-それから、ブラウザを開いて http://localhost:3000 にアクセスしてみてください。
+それから、ブラウザを開いて [http://localhost:3000](http://localhost:3000) にアクセスしてみてください。
 次のようなページが開きます。
 
 ![](img/3-2.png)
@@ -69,7 +69,7 @@ rake db:migrate
 
 これで準備ができました。
 
-ここでもう一度 `rails server` でサーバを立ち上げて、今度は http://localhost:3000/posts を開いてください。(post ではなく post**s** であることに注意)
+ここでもう一度 `rails server` でサーバを立ち上げて、今度は [http://localhost:3000/posts](http://localhost:3000/posts) を開いてください。(post ではなく post**s** であることに注意)
 
 以下のようなページが表示されるはずです。
 
@@ -84,7 +84,7 @@ rake db:migrate
 さて、ここでいよいよコードを編集してより掲示場らしくして行きましょう。
 まず、記事一覧のページから直接投稿できるようにしましょう。
 
-投稿一覧ページ (http://localhost:3000/posts) の実体は `app/views/posts/index.html.erb` というファイルです。
+投稿一覧ページ ([http://localhost:3000/posts](http://localhost:3000/posts)) の実体は `app/views/posts/index.html.erb` というファイルです。
 
 ![](img/5-1.png)
 
@@ -106,7 +106,7 @@ rake db:migrate
 
 ![](img/5-4.png)
 
-さて、もう一度 http://localhost:3000/posts を開いてみると、残念ながらエラー画面が表示されます。
+さて、もう一度 [http://localhost:3000/posts](http://localhost:3000/posts) を開いてみると、残念ながらエラー画面が表示されます。
 
 ![](img/5-5.png)
 
@@ -156,15 +156,15 @@ rake db:migrate
 
 # Step 7: トップページを記事一覧にする
 
-ここまで、記事一覧を表示する URL は http://localhost:3000/posts でした。
-これを http://localhost:3000 にアクセスすると直接見られるようにします。
+ここまで、記事一覧を表示する URL は [http://localhost:3000/posts](http://localhost:3000/posts) でした。
+これを [http://localhost:3000](http://localhost:3000) にアクセスすると直接見られるようにします。
 
 どの URL でどの画面を表示するのかを管理しているのは、 `config/routes.rb` というファイルです。
 これまで触ってきた `/posts` で記事一覧が表示されたりするのも、 `resources :posts` という命令によって設定されていたものです。
 
 ![](img/7-1.png)
 
-ここに、 `root to: ‘posts#index’` と追記すると、 http://localhost:3000 で表示されるのが `posts` の `index`、つまり記事一覧になります。
+ここに、 `root to: ‘posts#index’` と追記すると、 [http://localhost:3000](http://localhost:3000) で表示されるのが `posts` の `index`、つまり記事一覧になります。
 
 # まとめ
 
